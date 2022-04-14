@@ -1,0 +1,40 @@
+<local:HomePageBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiApp2"
+             x:Class="MauiApp2.HomePage"
+             BackgroundColor="{DynamicResource SecondaryColor}">
+
+
+    <ScrollView>
+        <TableView Intent="Menu">
+            <TableRoot>
+                <TableSection>
+                    <TextCell Text="SkiaSharpShapes"
+                          Detail="Draw Basic Shapes"
+                          Command="{Binding NavigateCommand}"
+                          CommandParameter="{x:Type local:Pages.BasicShapesPage}"/>
+                    <TextCell Text="SkiaSharpPath"
+                          Detail="Draw Path(Line,Arc)"
+                          Command="{Binding NavigateCommand}"
+                          CommandParameter="{x:Type local:Pages.PathPage}"/>
+                    <TextCell Text="SkiaSharpText"
+                          Detail="Draw Text"
+                          Command="{Binding NavigateCommand}"
+                          CommandParameter="{x:Type local:Pages.TextPage}"/>
+                    <TextCell Text="SkiaSharpBitmap"
+                          Detail="Draw Bitmap Image"
+                          Command="{Binding NavigateCommand}"
+                          CommandParameter="{x:Type local:Pages.BitmapPage}"/>
+                    <TextCell Text="SkiaSharpClipping"
+                          Detail="Draw Bitmap Image and Clip with Path Shapes"
+                          Command="{Binding NavigateCommand}"
+                          CommandParameter="{x:Type local:Pages.BitmapClippingPage}"/>
+                    <TextCell Text="SkiaSharpPolygon"
+                          Detail="Draw Polygons"
+                          Command="{Binding NavigateCommand}"
+                          CommandParameter="{x:Type local:Pages.PolygonPage}"/>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </ScrollView>
+</local:HomePageBase>

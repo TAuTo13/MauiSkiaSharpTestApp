@@ -1,0 +1,78 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behavior="clr-namespace:MauiApp2.Behavior"
+             xmlns:Skia="clr-namespace:SkiaSharp.Views.Maui.Controls;assembly=SkiaSharp.Views.Maui.Controls"
+             xmlns:items="clr-namespace:MauiApp2.Items"
+             xmlns:enum="clr-namespace:MauiApp2.Extensions"
+             x:Class="MauiApp2.Pages.PolygonPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackLayout Orientation="Horizontal"
+                     GridLayout.Row="0">
+            <Label WidthRequest="100"
+                   Margin="5"
+                   GridLayout.Column="0">PolyNum</Label>
+            <Label WidthRequest="100"
+                   Margin="5"
+                   GridLayout.Column="1">VertexNum</Label>
+        </StackLayout>
+        <StackLayout   Orientation="Horizontal"
+                       GridLayout.Row="1">
+
+            <Entry x:Name="PolyNumEntry"
+                   Keyboard="Numeric"
+                   WidthRequest="100"
+                   Margin="5"
+                   GridLayout.Column="0">
+                <Entry.Behaviors>
+                    <behavior:NumericValidationBehavior/>
+                </Entry.Behaviors>
+            </Entry>
+            <Entry x:Name="VertexNumEntry"
+                    Keyboard="Numeric"
+                   WidthRequest="100"
+                   Margin="5"
+                   GridLayout.Column="1">
+                <Entry.Behaviors>
+                    <behavior:NumericValidationBehavior/>
+                </Entry.Behaviors>
+            </Entry>
+            <Picker x:Name="DrawMethodPicker"
+                    SelectedIndexChanged="OnSelectionChanged"
+                    GridLayout.Column="2"
+                    WidthRequest="120"
+                    Margin="5"
+                    ItemsSource="{enum:EnumBindingSource {x:Type items:DrawPolygonMethods}}"
+                    SelectedIndex="0"/>
+            <Button x:Name="DrawPolygonButton"
+                    Text="DrawPolygon"
+                    Pressed="OnDrawButtonPressed"
+                    Margin="5"
+                    GridLayout.Column="3"/>
+            <Label x:Name="FillCheckLabel"
+                   IsVisible="False"
+                   FontSize="20"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   Margin="5"
+                   GridLayout.Column="4">Fill</Label>
+            <CheckBox x:Name="FillCheckBox"
+                      IsVisible="False"
+                      IsEnabled="False"
+                      CheckedChanged="OnCheckChanged"
+                      Margin="5"
+                      GridLayout.Column="5"/>
+        </StackLayout>
+        <Label x:Name="TimeCountLabel"
+               Margin="5"
+               GridLayout.Row="2">Time:</Label>
+        <Skia:SKCanvasView x:Name="skiaView"
+                            PaintSurface="OnSKCanvasPaint"
+                           GridLayout.Row="3"/>
+    </Grid>
+</ContentPage>
